@@ -1,0 +1,12 @@
+.fine-print {
+    font-size: 10pt;
+    margin-top: auto;
+    flex-flow: column;
+    font-family: sans-serif, 'Helvetica', 'Impact';
+}
+
+.fine-print-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
