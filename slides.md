@@ -5,6 +5,7 @@ title: We Need to Talk About Limits
 info: |
   ## We Need to Talk About Limits
   A presentation about resource management in modern engineering
+download: true
 ---
 
 # We Need to Talk About Limits
