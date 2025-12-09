@@ -222,6 +222,14 @@ layout: statement
 
 ---
 
+# Limits free you
+Limits _enable_ velocity
+- Reduce coordination
+- Prevent problem
+- Make the system more predictable
+
+---
+
 # Limits should be grounded in reality!
 
 Seen in the wild
@@ -331,7 +339,7 @@ A methodology for building resilient systems
 
 ---
 
-# Limits as design princile
+# Limits as design principle
 **The mindset shift:** Think about constraints first, features second
 
 1. **Identify resources** - What can run out?
