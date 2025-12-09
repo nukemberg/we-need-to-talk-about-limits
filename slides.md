@@ -93,7 +93,7 @@ layout: statement
 # How to get promoted in 5 easy steps
 
 1. Write code, insert busy-wait loop consuming 90% of CPU
-1. Deploy code to production, wait 3 month
+1. Deploy code to production, wait 3 months
 1. Initiate a cost optimization project, remove busy-wait loop
 1. Scale down 90% of infra, report savings to management
 1. Profit
@@ -225,12 +225,12 @@ layout: statement
 # Limits free you
 Limits _enable_ velocity
 - Reduce coordination
-- Prevent problem
+- Prevent problems
 - Make the system more predictable
 
 ---
 
-# Limits should be grounded in reality!
+# _Realistic_ limits!
 
 Seen in the wild
 - 10 sec connection timeout in DC LAN
@@ -346,7 +346,7 @@ layout: statement
 
 ---
 
-# When You Hit the Limit
+# When you hit the limit
 
 The art of graceful degradation
 
@@ -360,7 +360,7 @@ The art of graceful degradation
 
 ---
 
-# The Cardinal Sins
+# The Cardinal sins
 
 - **Unlimited by default** - Hope is not a strategy
 - **Unrealistic limits** - practically the same as unlimited
@@ -368,7 +368,7 @@ The art of graceful degradation
 - **Set and forget** - Limits need adjustment over time
 - **No testing** - You will discover your limits in production
 
-Practically every disaster starts with "we didn't think we needed limits"
+Practically every disaster starts with "we didn't think X would be so big"
 
 ---
 
@@ -379,7 +379,6 @@ You Gotta Have Limits!
 - The cloud hasn't eliminated the need for resource management—it's made it more important
 - Limits aren't constraints, they're safeguards
 - Resource-oriented design prevents surprises and enables scale
-- "Unlimited" means you haven't encountered the limit yet 
 
 
 
