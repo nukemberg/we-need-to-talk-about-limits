@@ -296,23 +296,10 @@ But in reality, you asked k8s to kill your pod on starvation
 
 ---
 
-# Overcommitment: The Double-Edged Sword
+# Overcommit
+when everyone assumes they are #1, no one is
 
-Selling more resources than you actually have
-
-- Pod A requests: 16GB, limit: 32GB
-- Pod B requests: 16GB, limit: 32GB
-- Pod C requests: 16GB, limit: 32GB
-- Node: 64GB RAM: **Total requests: 48GB ✓ (fits!)**
-- **Total limits: 96GB ✗**
-
-**This fails catastrophically when:**
-- Pods actually use what they're allowed
-- OOM killer starts evicting pods
-- Cascading failures across services
-- "But it worked in testing!" (where you had spare capacity)
-
-**Rule:** Overcommitment is borrowing from future stability. Know what you're trading.
+![](/overcommitment.svg)
 
 ---
 
@@ -320,14 +307,13 @@ Selling more resources than you actually have
 
 A coordination system for teams and components
 
-**The problem:** Multiple teams/services share finite resources
+- Multiple teams/services share finite resources
+- Explicit allocation (when we have resources)
+- Priorities (when we don't have resources)
 
-**The solution:** Explicit allocation as contracts
-- Team A: 100GB memory, 20 cores (cache)
-- Team B: 50GB memory, 100 cores (batch, runs at night)
-- Team C: 150GB memory, 200 DB connections (API)
+This is a **contract**
 
-**Benefits:** No surprises, no finger-pointing, capacity planning becomes possible
+We assume **failure**
 
 ---
 layout: section
@@ -338,9 +324,19 @@ layout: section
 A methodology for building resilient systems
 
 ---
+layout: statement
+---
+
+## Don't ask
+# "How much did it cost"
+
+## Ask
+# "How much am I willing to spend"
+
+---
 
 # Limits as design principle
-**The mindset shift:** Think about constraints first, features second
+**The mindset shift:** Constraints first, features second
 
 1. **Identify resources** - What can run out?
 1. **Define limits** - What's the max safe usage?

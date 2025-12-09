@@ -1,0 +1,115 @@
+<svg viewBox="0 0 1200 550" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font: bold 28px sans-serif; fill: #ffffff; }
+      .label { font: 18px sans-serif; fill: #ffffff; }
+      .label-small { font: 14px sans-serif; fill: #cccccc; }
+      .pod-box { stroke: #4a9eff; stroke-width: 3; fill: none; }
+      .pod-request { fill: #4a9eff; opacity: 0.4; }
+      .pod-limit { fill: #4a9eff; opacity: 0.15; stroke: #4a9eff; stroke-width: 2; stroke-dasharray: 5,5; }
+      .node-bg { fill: #1e1e1e; stroke: #666; stroke-width: 2; }
+      .oom-kill { fill: #ff4444; stroke: #ff6666; stroke-width: 3; opacity: 0.8; }
+      .warning { fill: #ffaa00; }
+      .checkmark { fill: #44ff44; }
+      .cross { stroke: #ff4444; stroke-width: 4; }
+      .arrow { stroke: #ffffff; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    </style>
+
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#ffffff" />
+    </marker>
+  </defs>
+
+  <!-- Left side: Planned allocation -->
+  <g id="planned">
+    <text x="280" y="90" class="label" text-anchor="middle">Planned Allocation</text>
+
+    <!-- Node capacity box -->
+    <rect x="80" y="110" width="400" height="300" class="node-bg" rx="10"/>
+    <text x="280" y="140" class="label" text-anchor="middle">Node: 64GB RAM</text>
+
+    <!-- Pod A -->
+    <g id="pod-a-planned">
+      <rect x="100" y="160" width="160" height="60" class="pod-request"/>
+      <rect x="100" y="160" width="320" height="60" class="pod-limit"/>
+      <rect x="100" y="160" width="320" height="60" class="pod-box"/>
+      <text x="260" y="195" class="label" text-anchor="middle">Pod A</text>
+      <text x="160" y="245" class="label-small">req: 16GB</text>
+      <text x="340" y="245" class="label-small">limit: 32GB</text>
+    </g>
+
+    <!-- Pod B -->
+    <g id="pod-b-planned">
+      <rect x="100" y="250" width="160" height="60" class="pod-request"/>
+      <rect x="100" y="250" width="320" height="60" class="pod-limit"/>
+      <rect x="100" y="250" width="320" height="60" class="pod-box"/>
+      <text x="260" y="285" class="label" text-anchor="middle">Pod B</text>
+      <text x="160" y="335" class="label-small">req: 16GB</text>
+      <text x="340" y="335" class="label-small">limit: 32GB</text>
+    </g>
+
+    <!-- Pod C -->
+    <g id="pod-c-planned">
+      <rect x="100" y="340" width="160" height="60" class="pod-request"/>
+      <rect x="100" y="340" width="320" height="60" class="pod-limit"/>
+      <rect x="100" y="340" width="320" height="60" class="pod-box"/>
+      <text x="260" y="375" class="label" text-anchor="middle">Pod C</text>
+      <text x="160" y="425" class="label-small">req: 16GB</text>
+      <text x="340" y="425" class="label-small">limit: 32GB</text>
+    </g>
+
+    <!-- Summary -->
+    <text x="280" y="460" class="label" text-anchor="middle">Total Requests: 48GB ✓</text>
+    <circle cx="420" cy="455" r="15" class="checkmark"/>
+    <path d="M 412 455 L 417 462 L 428 448" stroke="#ffffff" stroke-width="3" fill="none"/>
+
+    <text x="280" y="490" class="label" text-anchor="middle">Total Limits: 96GB ✗</text>
+    <circle cx="405" cy="485" r="15" fill="none" stroke="#ff4444" stroke-width="3"/>
+    <line x1="397" y1="477" x2="413" y2="493" class="cross"/>
+    <line x1="413" y1="477" x2="397" y2="493" class="cross"/>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 500 260 L 680 260" class="arrow"/>
+  <text x="590" y="250" class="label" text-anchor="middle">Memory Pressure</text>
+
+  <!-- Right side: Reality under load -->
+  <g id="reality">
+    <text x="920" y="90" class="label" text-anchor="middle">Under Memory Pressure</text>
+
+    <!-- Node capacity box -->
+    <rect x="720" y="110" width="400" height="300" class="node-bg" rx="10"/>
+    <text x="920" y="140" class="label" text-anchor="middle">Node: 64GB RAM (FULL!)</text>
+
+    <!-- Pod A - tries to grow -->
+    <g id="pod-a-reality">
+      <rect x="740" y="160" width="240" height="60" class="pod-request"/>
+      <rect x="740" y="160" width="240" height="60" class="pod-box"/>
+      <text x="860" y="195" class="label" text-anchor="middle">Pod A: 30GB</text>
+      <text x="860" y="245" class="label-small">Growing to limit...</text>
+    </g>
+
+    <!-- Pod B - killed -->
+    <g id="pod-b-reality">
+      <rect x="740" y="250" width="240" height="60" class="oom-kill"/>
+      <text x="860" y="285" class="label" text-anchor="middle" fill="#ffffff">Pod B: KILLED</text>
+      <text x="860" y="335" class="label-small" fill="#ff6666">OOM Kill</text>
+      <!-- Skull icon -->
+      <text x="1000" y="290" style="font-size: 40px;">💀</text>
+    </g>
+
+    <!-- Pod C - tries to grow -->
+    <g id="pod-c-reality">
+      <rect x="740" y="340" width="240" height="60" class="pod-request"/>
+      <rect x="740" y="340" width="240" height="60" class="pod-box"/>
+      <text x="860" y="375" class="label" text-anchor="middle">Pod C: 28GB</text>
+      <text x="860" y="425" class="label-small">Growing to limit...</text>
+    </g>
+
+    <!-- Warning message -->
+    <rect x="740" y="450" width="360" height="50" fill="#331100" stroke="#ffaa00" stroke-width="2" rx="5"/>
+    <text x="920" y="465" class="label-small" text-anchor="middle" fill="#ffaa00">⚠ Cascading Failures</text>
+    <text x="920" y="485" class="label-small" text-anchor="middle" fill="#ffaa00">No pod gets promised resources</text>
+  </g>
+
+</svg>
