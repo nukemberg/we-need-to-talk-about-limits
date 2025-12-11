@@ -10,3 +10,12 @@
     flex-direction: column;
     height: 100%;
 }
+
+.end::after, .intro::after {
+    content: "Avishai Ish-Shalom (@nukemberg)";
+    text-align: left;
+    font-size: medium;
+    position: absolute;
+    bottom: 1rem;
+    height: auto;
+}

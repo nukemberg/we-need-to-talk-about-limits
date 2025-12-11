@@ -6,6 +6,7 @@ info: |
   ## We Need to Talk About Limits
   A presentation about resource management in modern engineering
 download: true
+layout: intro
 ---
 
 # We Need to Talk About Limits
@@ -382,6 +383,8 @@ You Gotta Have Limits!
 
 
 
+---
+layout: end
 ---
 
 # The only unlimited thing is stupidity. Everything else has a limit
